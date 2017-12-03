@@ -3,7 +3,7 @@ main = do
         input <- readFile "day-2-input.txt"
         print $ process input
 
-process = show . sum . map exactQuotient . map parse . map words . lines
+process = show . sum . map exactQuotient . map (parse . words) . lines
 
 parse :: [String] -> [Int]
 parse = map read
