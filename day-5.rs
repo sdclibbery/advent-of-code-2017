@@ -17,8 +17,13 @@ fn run (jumps: &mut [i32]) -> i32 {
     let num_jumps: i32 = (jumps.iter().count()) as i32;
     while pc >=0 && pc < num_jumps {
         let jump_index: usize = pc as usize;
-        pc = pc + jumps[jump_index];
-        jumps[jump_index] += 1;
+        let jump: i32 = jumps[jump_index];
+        pc = pc + jump;
+        if jump >= 3 {
+            jumps[jump_index] -= 1;
+        } else {
+            jumps[jump_index] += 1;
+        }
         num_steps += 1;
     }
     return num_steps;
